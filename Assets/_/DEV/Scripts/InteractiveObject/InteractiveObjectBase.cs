@@ -1,6 +1,8 @@
 using System;
+using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class InteractiveObjectBase : MonoBehaviour
 {
@@ -8,10 +10,15 @@ public class InteractiveObjectBase : MonoBehaviour
 
     [Header("Rotation")]
     [SerializeField] private float rotationSpeed = 0.2f;
+    [SerializeField] private LayerMask interactiveObject; // <-- Layer autorisé
     
+
+    [Header("Text")]
+    [SerializeField] private TMP_Text timerText;
 
     private Vector3 initialPosition;
     private Quaternion initialRoation;
+    private Camera viewCamera;
     
     private float travelSpeed = 3f;
     private bool isBeingViewed;
@@ -19,10 +26,21 @@ public class InteractiveObjectBase : MonoBehaviour
 
     private void Start()
     {
+        viewCamera = Camera.main;
+        
         initialPosition = transform.position;
         initialRoation = transform.rotation;
         
-        _timer = new Timer(60f);
+        _timer = new Timer(60f)
+            .OnTick(currentTime =>
+        {
+            DisplayTimer(_timer.RemainingTime);
+        });
+        
+        _timer.Start();
+
+        if (viewCamera == null)
+            viewCamera = Camera.main;
     }
     
     private void Update()
@@ -64,7 +82,25 @@ public class InteractiveObjectBase : MonoBehaviour
     {
         if (Mouse.current == null) return;
 
-        if (Mouse.current.leftButton.isPressed)
+        // Au moment où on clique, on vérifie le layer touché
+        if (Mouse.current.leftButton.wasPressedThisFrame)
+        {
+            Ray ray = viewCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
+
+            if (Physics.Raycast(ray, out RaycastHit hit, 100f))
+            {
+                Debug.Log("Hit " + hit.collider.name);
+    
+                bool isOnCorrectLayer = ((1 << hit.collider.gameObject.layer) & interactiveObject) != 0;
+                canRotate = isOnCorrectLayer && hit.transform == transform;
+            }
+            else
+            {
+                canRotate = false;
+            }
+        }
+
+        if (canRotate && Mouse.current.leftButton.isPressed)
         {
             Vector2 delta = Mouse.current.delta.ReadValue();
             
@@ -74,10 +110,19 @@ public class InteractiveObjectBase : MonoBehaviour
         }
     }
 
+    private bool canRotate;
+
     public virtual void ResetTimer()
     {
         _timer.Reset();
     }
 
+    private void DisplayTimer(float timerRemainingTime)
+    {
+        int minutes = Mathf.FloorToInt(timerRemainingTime / 60f);
+        int seconds = Mathf.FloorToInt(timerRemainingTime % 60f);
+        int milliseconds = Mathf.FloorToInt((timerRemainingTime * 1000f) % 1000f);
 
+        timerText.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, milliseconds);
+    }
 }
