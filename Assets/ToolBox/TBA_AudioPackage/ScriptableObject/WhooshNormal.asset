@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b84be247191c4f84ab8157d1a18d5080, type: 3}
+  m_Name: WhooshNormal
+  m_EditorClassIdentifier: Assembly-CSharp::SoundConfig
+  clips:
+  - {fileID: 8300000, guid: 5fbfe351652f41740ad06390ddb7b2b6, type: 3}
+  volume: 1
+  mixerGroup: {fileID: 6104781244696087312, guid: f14d00d948e5b094690f40d095f196b8, type: 2}
+  randomizePitch: 0
+  minPitch: 0.9
+  maxPitch: 1.1
+  is3D: 1
