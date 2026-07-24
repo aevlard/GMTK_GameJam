@@ -9,6 +9,7 @@ public class ButtonHandler : MonoBehaviour
     private void Start()
     {
         _interactiveObject = GetComponentInParent<InteractiveObjectBase>();
+        Debug.Log(_interactiveObject);
     }
 
     void OnMouseDown()

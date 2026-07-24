@@ -6,7 +6,8 @@ public enum DragMode
 {
     Horizontal,
     Vertical,
-    Circular
+    Circular,
+    InverseCircular,
 }
 
 public enum RotationAxis
@@ -18,41 +19,57 @@ public enum RotationAxis
 
 public class DraggableRotator : MonoBehaviour
 {
-    [Header("Détection du clic")]
-    [SerializeField] private LayerMask interactableLayer;
+    [Header("Détection du clic")] [SerializeField]
+    private LayerMask interactableLayer;
+
     [SerializeField] private Camera cam;
 
-    [Header("Mode de rotation")]
-    [SerializeField] private DragMode dragMode = DragMode.Horizontal;
+    [Header("Mode de rotation")] [SerializeField]
+    private DragMode dragMode = DragMode.Horizontal;
+
     [SerializeField] private RotationAxis rotationAxis = RotationAxis.Y;
+    [SerializeField] private bool invertAxis;
     [SerializeField] private float sensitivity = 0.2f;
 
-    [Header("Limites (optionnel)")]
-    [SerializeField] private bool useLimits;
+    [Header("Cran de rotation (optionnel)")]
+    [SerializeField] private float rotationStep = 15f;
+    [SerializeField] private float timeToHadPerStep = 5f;
+    
+    public event Action<int> OnRotationStep;
+
+    [Header("Limites (optionnel)")] [SerializeField]
+    private bool useLimits;
+
     [SerializeField] private float minAngle;
     [SerializeField] private float maxAngle;
 
-    [Header("Debug")]
-    [SerializeField] private bool showCurrentAngle;
-
-    /// <summary>
-    /// Appelé à chaque changement de rotation, avec l'angle total actuel
-    /// </summary>
+    [Header("Debug")] [SerializeField] private bool showCurrentAngle;
+    
+    [Header("Variables")]
+    [SerializeField] private InteractiveObjectBase _interactiveObject;
+    
+    
     public event Action<float> OnRotationChanged;
 
     private bool isDragging;
     private float currentAngle;
     private Vector3 localAxis;
     private float previousMouseAngle;
+    private int lastStepIndex;
+    
+    
 
     private void Start()
     {
+        
         if (cam == null)
             cam = Camera.main;
 
         localAxis = GetAxisVector(rotationAxis);
-    }
 
+        if (invertAxis)
+            localAxis = -localAxis;
+    }
     private void Update()
     {
         if (Mouse.current == null) return;
@@ -68,7 +85,10 @@ public class DraggableRotator : MonoBehaviour
                     HandleLinearDrag();
                     break;
                 case DragMode.Circular:
-                    HandleCircularDrag();
+                    HandleCircularDrag(1f);
+                    break;
+                case DragMode.InverseCircular:
+                    HandleCircularDrag(-1f);
                     break;
             }
         }
@@ -85,11 +105,12 @@ public class DraggableRotator : MonoBehaviour
 
             if (Physics.Raycast(ray, out RaycastHit hit, 100f, interactableLayer))
             {
+                Debug.Log("Hit " + hit.collider.name);
                 if (hit.transform == transform)
                 {
                     isDragging = true;
 
-                    if (dragMode == DragMode.Circular)
+                    if (dragMode == DragMode.Circular || dragMode == DragMode.InverseCircular)
                     {
                         Vector2 screenCenter = cam.WorldToScreenPoint(transform.position);
                         previousMouseAngle = GetMouseAngle(screenCenter);
@@ -115,7 +136,7 @@ public class DraggableRotator : MonoBehaviour
         ApplyRotation(rawAmount * sensitivity);
     }
 
-    private void HandleCircularDrag()
+    private void HandleCircularDrag(float directionMultiplier)
     {
         Vector2 screenCenter = cam.WorldToScreenPoint(transform.position);
         float currentMouseAngle = GetMouseAngle(screenCenter);
@@ -123,7 +144,7 @@ public class DraggableRotator : MonoBehaviour
         float deltaAngle = Mathf.DeltaAngle(previousMouseAngle, currentMouseAngle);
         previousMouseAngle = currentMouseAngle;
 
-        ApplyRotation(deltaAngle * sensitivity);
+        ApplyRotation(deltaAngle * sensitivity * directionMultiplier);
     }
 
     private void ApplyRotation(float amount)
@@ -143,6 +164,23 @@ public class DraggableRotator : MonoBehaviour
 
         transform.Rotate(localAxis, appliedAmount, Space.Self);
         OnRotationChanged?.Invoke(currentAngle);
+
+        CheckRotationStep();
+    }
+
+    private void CheckRotationStep()
+    {
+        if (rotationStep <= 0f) return;
+
+        int currentStepIndex = Mathf.FloorToInt(currentAngle / rotationStep);
+
+        if (currentStepIndex != lastStepIndex)
+        {
+            int stepsCrossed = currentStepIndex - lastStepIndex;
+            lastStepIndex = currentStepIndex;
+            OnRotationStep?.Invoke(stepsCrossed);
+            _interactiveObject.AddTime(timeToHadPerStep);
+        }
     }
 
     private float GetMouseAngle(Vector2 screenCenter)

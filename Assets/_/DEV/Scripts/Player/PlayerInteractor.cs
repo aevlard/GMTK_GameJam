@@ -1,4 +1,5 @@
 using System;
+using Unity.Cinemachine;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,7 +12,7 @@ public class PlayerInteractor : MonoBehaviour
 
     private PlayerInput _playerInput;
     private PlayerState _playerState;
-    private InteractiveObjectBase currentInteractiveObject;
+    private InteractiveObjectBase _currentInteractiveObject;
 
 
     private void Start()
@@ -41,23 +42,24 @@ public class PlayerInteractor : MonoBehaviour
         _playerState.inFreeLook = true;
         _playerState.inInteraction = false;
         
-        currentInteractiveObject.ReturnToInitalPosition();
-        currentInteractiveObject = null;
+        _currentInteractiveObject.ReturnToInitalPosition();
+        _currentInteractiveObject = null;
     }
 
     private void TryInteractWithObject()
     {
         RaycastHit hit;
+        Transform camTransform = Camera.main.transform;
 
-        if (Physics.Raycast(Camera.main.transform.position, transform.forward, out hit,
+        if (Physics.Raycast(camTransform.position, camTransform.forward, out hit,
                 interactionRange, interactionObjectLayer))
         {
             if (hit.transform.gameObject.TryGetComponent<InteractiveObjectBase>(out var interactiveObjectBase))
             {
                 _playerState.inFreeLook = false;
                 _playerState.inInteraction = true;
-                
-                currentInteractiveObject = interactiveObjectBase;
+
+                _currentInteractiveObject = interactiveObjectBase;
                 interactiveObjectBase.SayHello();
                 interactiveObjectBase.MoveToPlayer(playerHand);
             }

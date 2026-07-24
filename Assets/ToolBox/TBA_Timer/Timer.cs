@@ -161,13 +161,19 @@ public class Timer
         onComplete?.Invoke();
         return this;
     }
-
+    
     /// <summary>
-    /// Ajoute du temps au timer
+    /// Ajoute du temps au timer sans dépasser Duration
     /// </summary>
     public Timer AddTime(float time)
     {
         CurrentTime = Mathf.Min(CurrentTime + time, Duration);
+        return this;
+    }
+    
+    public Timer AddRemainingTime(float time)
+    {
+        CurrentTime = Mathf.Max(CurrentTime - time, 0f);
         return this;
     }
 
