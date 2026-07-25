@@ -30,7 +30,7 @@ public class InteractiveObjectBase : MonoBehaviour
     private bool isBeingViewed;
     private Timer _timer;
 
-    private void Start()
+    public virtual void Start()
     {
         _objectCamera = transform.GetChild(0).GetComponent<CinemachineCamera>();
         
@@ -58,6 +58,8 @@ public class InteractiveObjectBase : MonoBehaviour
         if (!isBeingViewed) return;
 
         HandleRotation();
+
+        
     }
 
     public virtual void SayHello()
@@ -141,13 +143,16 @@ public class InteractiveObjectBase : MonoBehaviour
         _timer.Reset();
     }
 
-    private void DisplayTimer(float timerRemainingTime)
+    protected virtual void DisplayTimer(float timerRemainingTime)
     {
         int minutes = Mathf.FloorToInt(timerRemainingTime / 60f);
         int seconds = Mathf.FloorToInt(timerRemainingTime % 60f);
         int centiseconds = Mathf.FloorToInt((timerRemainingTime * 100f) % 100f);
 
-        timerText.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, centiseconds);
+        if (timerText != null)
+        {
+            timerText.text = string.Format("{0:00}:{1:00}:{2:00}", minutes, seconds, centiseconds);
+        }
     }
 
     public void AddTime(float time)

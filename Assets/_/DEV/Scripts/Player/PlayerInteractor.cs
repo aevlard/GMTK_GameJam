@@ -23,6 +23,12 @@ public class PlayerInteractor : MonoBehaviour
 
     private void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            Cursor.lockState = CursorLockMode.None;
+            Cursor.visible = true;
+        }
+        
         if (_playerInput == null) return;
 
         if (_playerInput.actions["InteractWithObject"].WasPerformedThisFrame())
