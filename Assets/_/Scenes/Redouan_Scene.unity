@@ -9306,7 +9306,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   timerText: {fileID: 319542587}
-  initialDuration: 45
+  initialDuration: 60
   playerCamera: {fileID: 599452206}
   timerSlider: {fileID: 526155178}
   baitSlider: {fileID: 1698446842}
