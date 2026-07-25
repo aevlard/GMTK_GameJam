@@ -19,6 +19,7 @@ public enum RotationAxis
 
 public class DraggableRotator : MonoBehaviour
 {
+    
     [Header("Détection du clic")] [SerializeField]
     private LayerMask interactableLayer;
 
@@ -97,6 +98,23 @@ public class DraggableRotator : MonoBehaviour
             Debug.Log(gameObject.name + " angle: " + currentAngle);
     }
 
+    public bool IsDragging => isDragging;
+
+    public void SetAngle(float angle)
+    {
+        if (isDragging) return; // sécurité : jamais forcer pendant que le joueur drag
+
+        float delta = angle - currentAngle;
+        currentAngle = angle;
+        transform.Rotate(localAxis, delta, Space.Self);
+
+        // Resynchronise le compteur de crans pour éviter un faux déclenchement
+        // d'OnRotationStep/AddTime au prochain drag du joueur
+        if (rotationStep > 0f)
+            lastStepIndex = Mathf.FloorToInt(currentAngle / rotationStep);
+
+        OnRotationChanged?.Invoke(currentAngle);
+    }
     private void HandleClickDetection()
     {
         if (Mouse.current.leftButton.wasPressedThisFrame)

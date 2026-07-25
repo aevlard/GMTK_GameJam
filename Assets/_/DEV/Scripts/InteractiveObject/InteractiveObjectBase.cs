@@ -111,7 +111,7 @@ public class InteractiveObjectBase : MonoBehaviour
         if (Mouse.current == null || _objectCamera != null) return;
 
         // Au moment où on clique, on vérifie le layer touché
-        if (Mouse.current.leftButton.wasPressedThisFrame)
+        if (Mouse.current.rightButton.wasPressedThisFrame)
         {
             Ray ray = viewCamera.ScreenPointToRay(Mouse.current.position.ReadValue());
 
@@ -126,7 +126,7 @@ public class InteractiveObjectBase : MonoBehaviour
             }
         }
 
-        if (canRotate && Mouse.current.leftButton.isPressed)
+        if (canRotate && Mouse.current.rightButton.isPressed)
         {
             Vector2 delta = Mouse.current.delta.ReadValue();
             
