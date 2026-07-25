@@ -18,7 +18,7 @@ public class InteractiveObjectBase : MonoBehaviour
     [SerializeField] private TMP_Text timerText;
     
     [Header("Timer")]
-    [SerializeField] private float initialDuration;
+    [SerializeField] protected float initialDuration;
 
     private Vector3 initialPosition;
     private Quaternion initialRoation;
@@ -28,7 +28,7 @@ public class InteractiveObjectBase : MonoBehaviour
     
     private float travelSpeed = 3f;
     private bool isBeingViewed;
-    private Timer _timer;
+    public Timer _timer;
 
     public virtual void Start()
     {
@@ -86,7 +86,7 @@ public class InteractiveObjectBase : MonoBehaviour
         isBeingViewed = true;
     }
     
-    public void ReturnToInitalPosition()
+    public virtual void ReturnToInitalPosition()
     {
         playerInput.SwitchCurrentActionMap("Player");
         Cursor.visible = false;

@@ -11,6 +11,7 @@ public class ClimPadHandler : InteractiveObjectBase
     
     private string climCode = null;
     private string currentCode = "";
+    private bool isLocked = true;
 
     public override void Start()
     {
@@ -47,12 +48,13 @@ public class ClimPadHandler : InteractiveObjectBase
         {
             timerText.gameObject.SetActive(true);
             userInputCodeText.gameObject.SetActive(false);
-            Debug.Log("bravo");
+            isLocked = false;
         }
         else
         {
             currentCode = "";
             DisplayCodeToPad();
+            isLocked = true;
         }
     }
     
@@ -67,6 +69,7 @@ public class ClimPadHandler : InteractiveObjectBase
     {
         ResetClim();
         currentCode = "";
+        isLocked = true;
         DisplayCodeToPad();
     }
 
@@ -79,10 +82,19 @@ public class ClimPadHandler : InteractiveObjectBase
     {
         timerText.gameObject.SetActive(false);
         userInputCodeText.gameObject.SetActive(true);
+        currentCode = "";
+        DisplayCodeToPad();
+        isLocked = true;
     }
 
     public void OnAddtimeClick()
     {
         AddTime(timeToHadPerClick);
+    }
+    
+    public override void ReturnToInitalPosition()
+    {
+        base.ReturnToInitalPosition();
+        ResetClim();
     }
 }
