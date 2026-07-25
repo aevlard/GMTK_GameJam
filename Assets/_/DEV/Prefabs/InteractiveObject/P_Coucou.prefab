@@ -250,6 +250,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 507178a3289692a49830914f9d92fa77, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CoucouHandler
+  _ticSound: {fileID: 0}
+  _alarmSound: {fileID: 0}
   playerInput: {fileID: 0}
   gameManager: {fileID: 0}
   tickIntervalCurve:
@@ -293,8 +295,8 @@ MonoBehaviour:
   timerText: {fileID: 12058761457892579}
   initialDuration: 60
   playerCamera: {fileID: 0}
-  hourHand: {fileID: 0}
-  minuteHand: {fileID: 0}
+  hourHand: {fileID: 1104548624132530045}
+  minuteHand: {fileID: 6019728054042081064}
   secondsPerFullMinuteRotation: 60
   rotationAxis: {x: 0, y: -1, z: 0}
 --- !u!1 &5848337862130642840
@@ -474,6 +476,11 @@ PrefabInstance:
       insertIndex: -1
       addedObject: {fileID: 4451488341058479148}
   m_SourcePrefab: {fileID: 100100000, guid: d31b26d66c4b46641acfbc8537178123, type: 3}
+--- !u!4 &1104548624132530045 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -1651339935187562852, guid: d31b26d66c4b46641acfbc8537178123, type: 3}
+  m_PrefabInstance: {fileID: 7368282670925238753}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &5159303359244026907 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 2438946713244931578, guid: d31b26d66c4b46641acfbc8537178123, type: 3}
@@ -554,6 +561,11 @@ BoxCollider:
   serializedVersion: 3
   m_Size: {x: 0.0008493614, y: 0.00029390943, z: 0.0029411104}
   m_Center: {x: 0.0000029981136, y: -0.00013382587, z: 0.0010134332}
+--- !u!4 &6019728054042081064 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -5347117694140553527, guid: d31b26d66c4b46641acfbc8537178123, type: 3}
+  m_PrefabInstance: {fileID: 7368282670925238753}
+  m_PrefabAsset: {fileID: 0}
 --- !u!4 &7046971720985949706 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: d31b26d66c4b46641acfbc8537178123, type: 3}
