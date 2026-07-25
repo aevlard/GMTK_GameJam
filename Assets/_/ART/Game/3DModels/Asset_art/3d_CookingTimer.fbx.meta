@@ -3,7 +3,12 @@ guid: 7b65081213d6d7740be237a07fc98d93
 ModelImporter:
   serializedVersion: 24200
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: M_Cooking_Timer
+    second: {fileID: 2100000, guid: bcc666ea45432164fa31cd7f8c2f333e, type: 2}
   materials:
     materialImportMode: 2
     materialName: 0
