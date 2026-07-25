@@ -7,6 +7,10 @@ using UnityEngine.Serialization;
 
 public class InteractiveObjectBase : MonoBehaviour
 {
+    [Header("Audio")]
+    [SerializeField] private SoundConfig _ticSound;
+    [SerializeField] private SoundConfig _alarmSound;
+    
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private GameManager gameManager;
 
@@ -79,6 +83,7 @@ public class InteractiveObjectBase : MonoBehaviour
                 gameManager.IncreaseNbrOfMisstakes();
                 _timer.Reset();
                 _timer.Start();
+                _alarmSound.Play(transform.position);
             });
         _timer.Start();
     }
@@ -96,7 +101,7 @@ public class InteractiveObjectBase : MonoBehaviour
         {
             intervalTimer = 0f;
             OnIntervalTick?.Invoke();
-            Debug.Log("tic");
+            _ticSound.Play(transform.position);
         }
     }
 
