@@ -1618,7 +1618,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   timerText: {fileID: 1840119968}
-  initialDuration: 45
+  initialDuration: 50
   playerCamera: {fileID: 599452206}
   popUpContainer: {fileID: 1623062297}
 --- !u!64 &304859338
@@ -2828,7 +2828,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   timerText: {fileID: 1366589899}
-  initialDuration: 30
+  initialDuration: 65
   playerCamera: {fileID: 599452206}
 --- !u!65 &449701729
 BoxCollider:
@@ -6133,7 +6133,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   timerText: {fileID: 723082538}
-  initialDuration: 45
+  initialDuration: 70
   playerCamera: {fileID: 599452206}
   hourHand: {fileID: 1040403754}
   minuteHand: {fileID: 1040403755}
@@ -9867,7 +9867,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   timerText: {fileID: 579864374}
-  initialDuration: 45
+  initialDuration: 75
   playerCamera: {fileID: 599452206}
 --- !u!54 &1785163742
 Rigidbody:
