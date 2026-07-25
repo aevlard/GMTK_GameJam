@@ -8,7 +8,18 @@ using UnityEngine.Serialization;
 public class InteractiveObjectBase : MonoBehaviour
 {
     [SerializeField] private PlayerInput playerInput;
+    [SerializeField] private GameManager gameManager;
 
+    [Header("Interval Event")]
+    [Tooltip("X = ratio de temps restant (1 = début, 0 = fin). Y = intervalle en secondes entre chaque tic.")]
+    [SerializeField] private AnimationCurve tickIntervalCurve = AnimationCurve.Linear(0f, 0.05f, 1f, 1f);
+
+    [SerializeField] private float minTickInterval = 0.05f; // garde-fou anti-spam infini
+
+    public event Action OnIntervalTick;
+
+    private float intervalTimer;
+    
     [Header("Rotation")]
     [SerializeField] private float rotationSpeed = 0.2f;
     [SerializeField] private LayerMask interactiveObject; // <-- Layer autorisé
@@ -38,14 +49,6 @@ public class InteractiveObjectBase : MonoBehaviour
         
         initialPosition = transform.position;
         initialRoation = transform.rotation;
-        
-        _timer = new Timer(initialDuration)
-            .OnTick(currentTime =>
-        {
-            DisplayTimer(_timer.RemainingTime);
-        });
-        
-        _timer.Start();
 
         if (viewCamera == null)
             viewCamera = Camera.main;
@@ -53,18 +56,48 @@ public class InteractiveObjectBase : MonoBehaviour
     
     private void Update()
     {
-        _timer.Tick();
+        if (_timer != null)
+        {
+            _timer.Tick();
+        }
         
         if (!isBeingViewed) return;
 
         HandleRotation();
-
-        
     }
 
-    public virtual void SayHello()
+    public virtual void StartItem()
     {
-        
+        _timer = new Timer(initialDuration)
+            .OnTick(currentTime =>
+            {
+                DisplayTimer(_timer.RemainingTime);
+                HandleIntervalTick();
+            })
+            .OnComplete(() =>
+            {
+                gameManager.IncreaseNbrOfMisstakes();
+                _timer.Reset();
+                _timer.Start();
+            });
+        _timer.Start();
+    }
+
+    private void HandleIntervalTick()
+    {
+        if (initialDuration <= 0f) return;
+
+        float ratio = Mathf.Clamp01(_timer.RemainingTime / initialDuration);
+        float currentInterval = Mathf.Max(tickIntervalCurve.Evaluate(ratio), minTickInterval);
+
+        intervalTimer += Time.deltaTime;
+
+        if (intervalTimer >= currentInterval)
+        {
+            intervalTimer = 0f;
+            OnIntervalTick?.Invoke();
+            Debug.Log("tic");
+        }
     }
 
     public virtual void MoveToPlayer(Transform playerHand)

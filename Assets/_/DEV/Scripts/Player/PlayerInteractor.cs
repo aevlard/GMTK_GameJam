@@ -66,7 +66,6 @@ public class PlayerInteractor : MonoBehaviour
                 _playerState.inInteraction = true;
 
                 _currentInteractiveObject = interactiveObjectBase;
-                interactiveObjectBase.SayHello();
                 interactiveObjectBase.MoveToPlayer(playerHand);
             }
         }
