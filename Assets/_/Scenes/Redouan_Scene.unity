@@ -570,6 +570,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1943022912}
     - target: {fileID: 3401582841168115609, guid: f92eb41fb3d5b624794b37bedb1e33d3, type: 3}
+      propertyPath: globalTimerTime
+      value: 180
+      objectReference: {fileID: 0}
+    - target: {fileID: 3401582841168115609, guid: f92eb41fb3d5b624794b37bedb1e33d3, type: 3}
       propertyPath: nbrOfMistakesText
       value: 
       objectReference: {fileID: 1168484970}
