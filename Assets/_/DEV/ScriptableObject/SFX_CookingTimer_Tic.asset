@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b84be247191c4f84ab8157d1a18d5080, type: 3}
   m_Name: SFX_CookingTimer_Tic
   m_EditorClassIdentifier: Assembly-CSharp::SoundConfig
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: a2895e8d485a95d4d86295911ad9a9b6, type: 3}
+  - {fileID: 8300000, guid: 5b50426a58d57704397504afd4c554a5, type: 3}
+  - {fileID: 8300000, guid: 5bbc35255123d6b4dad2774e14677e99, type: 3}
+  - {fileID: 8300000, guid: 2c7417793919f07409f0190360fb35a1, type: 3}
   volume: 1
   mixerGroup: {fileID: 5820145366886040078, guid: f14d00d948e5b094690f40d095f196b8, type: 2}
   randomizePitch: 0
