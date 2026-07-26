@@ -75,15 +75,26 @@ public class SoundConfig : ScriptableObject
     // API publique
     // ─────────────────────────────────────────
 
-    /// <summary>Joue le son à la position donnée.</summary>
-    public void Play(Vector3 position)
+    [Header("Loop")]
+    [Tooltip("Si coché, le son boucle indéfiniment jusqu'à ce qu'il soit stoppé manuellement.")]
+    public bool loop = false;
+
+    /// <summary>Joue le son à la position donnée. Retourne l'AudioSource utilisée (null si échec ou mis en file d'attente).</summary>
+    public AudioSource Play(Vector3 position)
     {
-        if (!Validate()) return;
-        SoundManager.Instance.Play(this, position);
+        if (!Validate()) return null;
+        return SoundManager.Instance.Play(this, position);
     }
 
     /// <summary>Joue le son à la position du Transform donné.</summary>
-    public void Play(Transform target) => Play(target.position);
+    public AudioSource Play(Transform target) => Play(target.position);
+
+    /// <summary>Stoppe ce son s'il est en cours de lecture.</summary>
+    public void Stop(AudioSource source)
+    {
+        if (SoundManager.Instance != null)
+            SoundManager.Instance.StopSound(source);
+    }
 
     /// <summary>
     /// Remet le compteur de pitch progressif à zéro.

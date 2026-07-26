@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Rendering;
+using UnityEngine.Rendering.Universal;
 
 public class GameManager : MonoBehaviour
 {
@@ -12,11 +14,36 @@ public class GameManager : MonoBehaviour
     [SerializeField] private float timeBetweenActivation = 10f;
     [SerializeField] private TMP_Text globalTimerText;
     [SerializeField] private TMP_Text nbrOfMistakesText;
+    
+    [Header("Post Processing")]
+    [SerializeField] private Volume pps;
+
+    private ColorAdjustments colorAdjustments;
+    private ChromaticAberration chromaticAberration;
+    private Vignette vignette;
+    private Bloom bloom;
+    private LensDistortion lensDistortion;
 
     private Timer _timer;
     private int nbrOfMisstakes = 0;
     private float activationTimer;
     private List<InteractiveObjectBase> remainingObjectsToActivate;
+
+
+    private void Awake()
+    {
+        if (pps == null || pps.profile == null)
+        {
+            Debug.LogWarning("PPS Volume ou profile manquant !");
+            return;
+        }
+
+        pps.profile.TryGet(out colorAdjustments);
+        pps.profile.TryGet(out chromaticAberration);
+        pps.profile.TryGet(out vignette);
+        pps.profile.TryGet(out bloom);
+        pps.profile.TryGet(out lensDistortion);
+    }
 
     private void Start()
     {
@@ -82,8 +109,46 @@ public class GameManager : MonoBehaviour
     public void IncreaseNbrOfMisstakes()
     {
         nbrOfMisstakes++;
+        ApplyPPSSettings();
         DisplayNbrOfMistake();
         CheckNbrOfMistakes();
+    }
+
+    private void ApplyPPSSettings()
+    {
+        if (nbrOfMisstakes == 1)
+        {
+            SetPPSValues(contrast: 15f, saturation: 30f, chromaticAberrationIntensity: 0.25f,
+                vignetteIntensity: 0.25f, bloomIntensity: 1f, lensDistortionIntensity: -.15f);
+        }
+
+        if (nbrOfMisstakes == 2)
+        {
+            SetPPSValues(contrast: 25f, saturation: 50f, chromaticAberrationIntensity: 0.4f,
+                vignetteIntensity: 0.4f, bloomIntensity: 2f, lensDistortionIntensity: -.3f);
+        }
+    }
+
+    private void SetPPSValues(float contrast, float saturation, float chromaticAberrationIntensity,
+        float vignetteIntensity, float bloomIntensity, float lensDistortionIntensity)
+    {
+        if (colorAdjustments != null)
+        {
+            colorAdjustments.contrast.value = contrast;
+            colorAdjustments.saturation.value = saturation;
+        }
+
+        if (chromaticAberration != null)
+            chromaticAberration.intensity.value = chromaticAberrationIntensity;
+
+        if (vignette != null)
+            vignette.intensity.value = vignetteIntensity;
+
+        if (bloom != null)
+            bloom.intensity.value = bloomIntensity;
+
+        if (lensDistortion != null)
+            lensDistortion.intensity.value = lensDistortionIntensity;
     }
 
     private void DisplayNbrOfMistake()
