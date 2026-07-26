@@ -3328,9 +3328,21 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2399565318827348877, guid: ae7742625baffe54a9e10880511fcde5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 3864290908437765802, guid: ae7742625baffe54a9e10880511fcde5, type: 3}
       propertyPath: m_Name
       value: P_Phone
+      objectReference: {fileID: 0}
+    - target: {fileID: 4153342132274733071, guid: ae7742625baffe54a9e10880511fcde5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6888449136745114181, guid: ae7742625baffe54a9e10880511fcde5, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7437394189624666826, guid: ae7742625baffe54a9e10880511fcde5, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3370,6 +3382,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7437394189624666826, guid: ae7742625baffe54a9e10880511fcde5, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7490896703480510047, guid: ae7742625baffe54a9e10880511fcde5, type: 3}
+      propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9185788945785792767, guid: ae7742625baffe54a9e10880511fcde5, type: 3}

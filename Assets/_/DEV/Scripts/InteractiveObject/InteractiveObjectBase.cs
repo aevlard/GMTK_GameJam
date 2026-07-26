@@ -92,8 +92,7 @@ public class InteractiveObjectBase : MonoBehaviour
             .OnComplete(() =>
             {
                 gameManager.IncreaseNbrOfMisstakes();
-                _timer.Reset();
-                _timer.Start();
+                
                 if (_alarmSound == null)
                 {
                     Debug.LogWarning("SoundDesign");
@@ -216,6 +215,7 @@ public class InteractiveObjectBase : MonoBehaviour
     public virtual void ResetTimer()
     {
         _timer.Reset();
+        _timer.Start();
     }
 
     protected virtual void DisplayTimer(float timerRemainingTime)
@@ -232,6 +232,11 @@ public class InteractiveObjectBase : MonoBehaviour
 
     public void AddTime(float time)
     {
+        if (_timer.RemainingTime <= 0)
+        {
+            _timer.Reset();
+            _timer.Start();
+        }
         _timer.AddRemainingTime(time);
     }
 }
