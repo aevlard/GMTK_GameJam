@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b84be247191c4f84ab8157d1a18d5080, type: 3}
   m_Name: SFX_Clim_Tic
   m_EditorClassIdentifier: Assembly-CSharp::SoundConfig
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: 17a1cf94b0841df4fab8b23a69e6ac3d, type: 3}
+  - {fileID: 8300000, guid: a793ec6532e9d5a41ab5c449d208fd38, type: 3}
+  - {fileID: 8300000, guid: be89fb884a45c3c4990770da83db88c1, type: 3}
+  - {fileID: 8300000, guid: 377c96b177c4bb442a7d13db4c25f4ea, type: 3}
   volume: 1
   mixerGroup: {fileID: 6244003388825910652, guid: f14d00d948e5b094690f40d095f196b8, type: 2}
   randomizePitch: 0

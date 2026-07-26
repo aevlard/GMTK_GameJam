@@ -12,7 +12,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b84be247191c4f84ab8157d1a18d5080, type: 3}
   m_Name: SFX_AlarmClock_Tic
   m_EditorClassIdentifier: Assembly-CSharp::SoundConfig
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: 8d2b9e60a813b4f42adbcd2781f354d6, type: 3}
+  - {fileID: 8300000, guid: 0e2faebb844891242bf85a3de6635955, type: 3}
+  - {fileID: 8300000, guid: 63310c8faf7ba7b43b4d1138b12d8e82, type: 3}
+  - {fileID: 0}
   volume: 1
   mixerGroup: {fileID: -4475183458508321678, guid: f14d00d948e5b094690f40d095f196b8, type: 2}
   randomizePitch: 0
