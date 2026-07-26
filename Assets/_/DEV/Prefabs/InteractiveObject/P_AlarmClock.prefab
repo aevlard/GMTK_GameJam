@@ -68,6 +68,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d11667077176bae4fa40f42e15ded7ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AlarmClockHandler
+  _ticSound: {fileID: 0}
+  _alarmSound: {fileID: 0}
   playerInput: {fileID: 0}
   gameManager: {fileID: 0}
   tickIntervalCurve:
@@ -111,8 +113,8 @@ MonoBehaviour:
   timerText: {fileID: 795728236373998853}
   initialDuration: 30
   playerCamera: {fileID: 0}
-  hourHand: {fileID: 0}
-  minuteHand: {fileID: 0}
+  hourHand: {fileID: 8584574921667674151}
+  minuteHand: {fileID: 437075515488068963}
   secondsPerFullMinuteRotation: 30
   rotationAxis: {x: 0, y: 0, z: 1}
 --- !u!1 &7661928831190830434
@@ -385,101 +387,25 @@ PrefabInstance:
       value: 3d_AlarmClock
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-    m_RemovedGameObjects: []
+    m_RemovedGameObjects:
+    - {fileID: 1811551603968780072, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+    - {fileID: 4055879079928232784, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+    - {fileID: -8051926444425745535, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: -3115689609106326471, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 2426529132263800286}
-    - targetCorrespondingSourceObject: {fileID: -3115689609106326471, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3163165191199953293}
-    - targetCorrespondingSourceObject: {fileID: -3115689609106326471, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 3759084427302026888}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
---- !u!1 &1211629268596166495 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: -3115689609106326471, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+--- !u!4 &437075515488068963 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: -4466858943811119611, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
   m_PrefabInstance: {fileID: 4905065032140944230}
   m_PrefabAsset: {fileID: 0}
---- !u!65 &2426529132263800286
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1211629268596166495}
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_IsTrigger: 0
-  m_ProvidesContacts: 0
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Size: {x: 0.0612669, y: 0.07800232, z: 0.104142904}
-  m_Center: {x: -0.0007314682, y: 0.00017423183, z: -0.052071452}
---- !u!54 &3163165191199953293
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1211629268596166495}
-  serializedVersion: 5
-  m_Mass: 1
-  m_LinearDamping: 0
-  m_AngularDamping: 0.05
-  m_CenterOfMass: {x: 0, y: 0, z: 0}
-  m_InertiaTensor: {x: 1, y: 1, z: 1}
-  m_InertiaRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ImplicitCom: 1
-  m_ImplicitTensor: 1
-  m_UseGravity: 1
-  m_IsKinematic: 1
-  m_Interpolate: 0
-  m_Constraints: 0
-  m_CollisionDetection: 0
---- !u!114 &3759084427302026888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1211629268596166495}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 100bcb73ae253334e9a6b49587e5ab85, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::DraggableRotator
-  interactableLayer:
-    serializedVersion: 2
-    m_Bits: 128
-  cam: {fileID: 0}
-  dragMode: 3
-  rotationAxis: 2
-  invertAxis: 1
-  sensitivity: 0.2
-  rotationStep: 15
-  timeToHadPerStep: 5
-  useLimits: 0
-  minAngle: 0
-  maxAngle: 0
-  showCurrentAngle: 0
-  _interactiveObject: {fileID: 795465998098368318}
 --- !u!4 &4870911097018651789 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -8679921383154817045, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+  m_PrefabInstance: {fileID: 4905065032140944230}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &8584574921667674151 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 3688663324641850177, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
   m_PrefabInstance: {fileID: 4905065032140944230}
   m_PrefabAsset: {fileID: 0}

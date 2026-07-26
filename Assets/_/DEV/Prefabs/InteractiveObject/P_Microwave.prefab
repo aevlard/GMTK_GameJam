@@ -172,6 +172,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 84bffe0f6c0749948a5be1749c377043, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BasicTimerTest
+  _ticSound: {fileID: 0}
+  _alarmSound: {fileID: 0}
   playerInput: {fileID: 0}
   gameManager: {fileID: 0}
   tickIntervalCurve:
@@ -476,6 +478,22 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -8070833000594180786, guid: bfc72cae9c7c98240817c4305771526f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7154f78780414498b7aca244e20a8a, type: 2}
+    - target: {fileID: -7511558181221131132, guid: bfc72cae9c7c98240817c4305771526f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7154f78780414498b7aca244e20a8a, type: 2}
+    - target: {fileID: -7175987802971238195, guid: bfc72cae9c7c98240817c4305771526f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7154f78780414498b7aca244e20a8a, type: 2}
+    - target: {fileID: -6115824270096453579, guid: bfc72cae9c7c98240817c4305771526f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7154f78780414498b7aca244e20a8a, type: 2}
     - target: {fileID: -5665199708244444389, guid: bfc72cae9c7c98240817c4305771526f, type: 3}
       propertyPath: m_LocalPosition.x
       value: -0.064
@@ -484,6 +502,18 @@ PrefabInstance:
       propertyPath: m_LocalPosition.z
       value: 0.149
       objectReference: {fileID: 0}
+    - target: {fileID: -3320796259786722497, guid: bfc72cae9c7c98240817c4305771526f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7154f78780414498b7aca244e20a8a, type: 2}
+    - target: {fileID: -835595292704731034, guid: bfc72cae9c7c98240817c4305771526f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7154f78780414498b7aca244e20a8a, type: 2}
+    - target: {fileID: 73453296116418339, guid: bfc72cae9c7c98240817c4305771526f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7154f78780414498b7aca244e20a8a, type: 2}
     - target: {fileID: 919132149155446097, guid: bfc72cae9c7c98240817c4305771526f, type: 3}
       propertyPath: m_Name
       value: 3d_MicroWave
