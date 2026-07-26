@@ -40,10 +40,10 @@ Material:
     - _Color_Resolution: 32
     - _DitherSpread: 0.25
     - _Dither_Spread: 0.1
-    - _Gradient_Impact: 0
+    - _Gradient_Impact: 0.1
     - _PixelSize: 0.51
-    - _Pixel_Count: 720
-    - _Posterization: 64
+    - _Pixel_Count: 1080
+    - _Posterization: 128
     - _Steps: -0.55
     m_Colors: []
   m_BuildTextureStacks: []
