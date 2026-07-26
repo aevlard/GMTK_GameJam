@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b84be247191c4f84ab8157d1a18d5080, type: 3}
   m_Name: SFX_Coucou_Tic
   m_EditorClassIdentifier: Assembly-CSharp::SoundConfig
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: 738c996e29061fb44be0ca66521aa45b, type: 3}
+  - {fileID: 8300000, guid: 927fafb379b29f54198247632502a7fb, type: 3}
+  - {fileID: 8300000, guid: 02992e9408d1eb243bd47442a5b4f05f, type: 3}
+  - {fileID: 8300000, guid: 443959a5976eeaf4a8182c8dbe218322, type: 3}
+  - {fileID: 8300000, guid: 29c262ffa48b3254cab7686501a9998d, type: 3}
   volume: 1
   mixerGroup: {fileID: 5927183661515953751, guid: f14d00d948e5b094690f40d095f196b8, type: 2}
   randomizePitch: 0

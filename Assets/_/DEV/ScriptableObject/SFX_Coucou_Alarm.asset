@@ -12,7 +12,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b84be247191c4f84ab8157d1a18d5080, type: 3}
   m_Name: SFX_Coucou_Alarm
   m_EditorClassIdentifier: Assembly-CSharp::SoundConfig
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: 10b0f41de6f53fb4cb0adb6523e4ca87, type: 3}
+  - {fileID: 8300000, guid: 2238a5bc6b7c03e4392c4b10eb520888, type: 3}
+  - {fileID: 8300000, guid: 54b1f23e290cb6b46a83c09e8d3c1ab1, type: 3}
+  - {fileID: 8300000, guid: 972a140eacb5f824e8ee40be6d6a8545, type: 3}
+  - {fileID: 8300000, guid: f1562039707be1d4c98a6f6b9982082c, type: 3}
   volume: 1
   mixerGroup: {fileID: 7520769722506054867, guid: f14d00d948e5b094690f40d095f196b8, type: 2}
   randomizePitch: 0
