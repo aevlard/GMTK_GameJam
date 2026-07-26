@@ -5,15 +5,20 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
+using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
+    [Header("Vie")]
+    [SerializeField] private Image[] lifeImages; // assigne les 3 images dans l'ordre, dans l'inspector
+
+    [Header("Couleur quand une vie est perdue")]
+    [SerializeField] private Color darkenedColor = new Color(0.3f, 0.3f, 0.3f, 1f);
     [SerializeField] private float globalTimerTime = 600f;
     [SerializeField] private List<InteractiveObjectBase> interactiveObjectToActive = new List<InteractiveObjectBase>();
     [SerializeField] private InteractiveObjectBase firstInteractiveObjectToActive;
     [SerializeField] private float timeBetweenActivation = 10f;
     [SerializeField] private TMP_Text globalTimerText;
-    [SerializeField] private TMP_Text nbrOfMistakesText;
     
     [Header("Post Processing")]
     [SerializeField] private Volume pps;
@@ -47,12 +52,15 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
+        Time.timeScale = 1f;
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
         remainingObjectsToActivate = new List<InteractiveObjectBase>(interactiveObjectToActive);
 
         _timer = new Timer(globalTimerTime)
             .OnComplete(() =>
             {
-                Debug.Log("GameWin");
+                SceneLoader.Instance.LoadLevel("Win_Scene");
             })
             .OnTick((currentTime) =>
             {
@@ -153,7 +161,11 @@ public class GameManager : MonoBehaviour
 
     private void DisplayNbrOfMistake()
     {
-        nbrOfMistakesText.text = nbrOfMisstakes.ToString();
+        int indexToDarken = nbrOfMisstakes - 1;
+
+        if (lifeImages == null || indexToDarken < 0 || indexToDarken >= lifeImages.Length) return;
+
+        lifeImages[indexToDarken].color = darkenedColor;
     }
 
     private void CheckNbrOfMistakes()
