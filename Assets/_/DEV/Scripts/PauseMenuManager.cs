@@ -1,5 +1,6 @@
 using System;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class PauseMenuManager : MonoBehaviour
 {
@@ -7,37 +8,45 @@ public class PauseMenuManager : MonoBehaviour
     [SerializeField] private GameObject pauseMenu;
     [SerializeField] private GameObject settingsMenu;
     
+    [SerializeField] private PlayerInput playerInput;
+    
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Escape))
         {
             pauseMenu.SetActive(true);
             Time.timeScale = 0f;
+            playerInput.SwitchCurrentActionMap("ObjectView");
+            Cursor.visible = true;
+            Cursor.lockState = CursorLockMode.None;
         }
     }
 
-    private void OnCloseButtonClick()
+    public void OnCloseButtonClick()
     {
         pauseMenu.SetActive(false);
         Time.timeScale = 1f;
+        playerInput.SwitchCurrentActionMap("Player");
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
     }
 
-    private void OnRestartButtonClick()
+    public void OnRestartButtonClick()
     {
-        SceneLoader.Instance.LoadLevel("Redouane_Scene");
+        SceneLoader.Instance.LoadLevel("Redouan_Scene");
     }
 
-    private void OnSettingsButtonClick()
+    public void OnSettingsButtonClick()
     {
         settingsMenu.SetActive(true);
     }
 
-    private void OnQuitButtonClick()
+    public void OnQuitButtonClick()
     {
         Application.Quit();
     }
 
-    private void OnQuitSettingsButtonClick()
+    public void OnQuitSettingsButtonClick()
     {
         settingsMenu.SetActive(false);
     }
