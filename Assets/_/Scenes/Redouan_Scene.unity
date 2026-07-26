@@ -170,6 +170,10 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 599452206}
+    - target: {fileID: 795465998098368318, guid: 06a0f00a17c832d4999bbcc3e8a8e28d, type: 3}
+      propertyPath: initialDuration
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 3527012177158492733, guid: 06a0f00a17c832d4999bbcc3e8a8e28d, type: 3}
       propertyPath: cam
       value: 
@@ -1227,6 +1231,10 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 599452206}
+    - target: {fileID: 7056121496739689527, guid: c8bc8dc63f3e44843a3ae0fd2223d3a9, type: 3}
+      propertyPath: initialDuration
+      value: 80
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -1313,6 +1321,14 @@ PrefabInstance:
       propertyPath: playerHand
       value: 
       objectReference: {fileID: 599452207}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: MoveSpeed
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 8616685848737228371, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
+      propertyPath: SprintSpeed
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 8616685848737228372, guid: c5efc39a8aaf6e64ea40e9ad573e9b47, type: 3}
       propertyPath: m_Name
       value: PlayerCapsule
@@ -1438,6 +1454,10 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 599452206}
+    - target: {fileID: 1125571798870952877, guid: 38e74ece34612ff43a62cf5088909049, type: 3}
+      propertyPath: initialDuration
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 3393092110948762170, guid: 38e74ece34612ff43a62cf5088909049, type: 3}
       propertyPath: m_Name
       value: P_Laptop
@@ -2439,12 +2459,60 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5481445771353426473, guid: ddfaef0ee2e4b164bb8af60c877e09ef, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481445771353426473, guid: ddfaef0ee2e4b164bb8af60c877e09ef, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481445771353426473, guid: ddfaef0ee2e4b164bb8af60c877e09ef, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5481445771353426473, guid: ddfaef0ee2e4b164bb8af60c877e09ef, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5577209664585320599, guid: ddfaef0ee2e4b164bb8af60c877e09ef, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5751016805695304479, guid: ddfaef0ee2e4b164bb8af60c877e09ef, type: 3}
       propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6695671839270611065, guid: ddfaef0ee2e4b164bb8af60c877e09ef, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6695671839270611065, guid: ddfaef0ee2e4b164bb8af60c877e09ef, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6695671839270611065, guid: ddfaef0ee2e4b164bb8af60c877e09ef, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6695671839270611065, guid: ddfaef0ee2e4b164bb8af60c877e09ef, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7955750549561811539, guid: ddfaef0ee2e4b164bb8af60c877e09ef, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7955750549561811539, guid: ddfaef0ee2e4b164bb8af60c877e09ef, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7955750549561811539, guid: ddfaef0ee2e4b164bb8af60c877e09ef, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7955750549561811539, guid: ddfaef0ee2e4b164bb8af60c877e09ef, type: 3}
+      propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9149325928997214328, guid: ddfaef0ee2e4b164bb8af60c877e09ef, type: 3}
@@ -3209,6 +3277,10 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 599452206}
+    - target: {fileID: 2170118994331949093, guid: 9d3e9e2f14b8fed4b88559ace3bf45df, type: 3}
+      propertyPath: initialDuration
+      value: 60
+      objectReference: {fileID: 0}
     - target: {fileID: 5801604164243324208, guid: 9d3e9e2f14b8fed4b88559ace3bf45df, type: 3}
       propertyPath: m_Name
       value: P_CookingTimer
@@ -3384,6 +3456,10 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 599452206}
+    - target: {fileID: 9185788945785792767, guid: ae7742625baffe54a9e10880511fcde5, type: 3}
+      propertyPath: initialDuration
+      value: 45
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -3569,6 +3645,10 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 599452206}
+    - target: {fileID: 5025917218447794880, guid: 270623b2f2e1596428252a8e0a38f82c, type: 3}
+      propertyPath: initialDuration
+      value: 80
+      objectReference: {fileID: 0}
     - target: {fileID: 6559572573632858355, guid: 270623b2f2e1596428252a8e0a38f82c, type: 3}
       propertyPath: m_LocalPosition.x
       value: -1.93
@@ -3731,6 +3811,10 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 599452206}
+    - target: {fileID: 1566194639722274127, guid: fb480b076ff42e045b179616de084af4, type: 3}
+      propertyPath: initialDuration
+      value: 90
+      objectReference: {fileID: 0}
     - target: {fileID: 2198844437630940239, guid: fb480b076ff42e045b179616de084af4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4664,6 +4748,10 @@ PrefabInstance:
       propertyPath: playerCamera
       value: 
       objectReference: {fileID: 599452206}
+    - target: {fileID: 3466337641562638558, guid: ab77a91606bba6c47b1175d53498cf68, type: 3}
+      propertyPath: initialDuration
+      value: 75
+      objectReference: {fileID: 0}
     - target: {fileID: 4789349993580284241, guid: ab77a91606bba6c47b1175d53498cf68, type: 3}
       propertyPath: m_Name
       value: P_TVRemote
