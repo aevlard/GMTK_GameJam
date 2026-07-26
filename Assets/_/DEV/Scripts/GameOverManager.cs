@@ -16,7 +16,7 @@ public class GameOverManager : MonoBehaviour
 
     public void OnRestartButtonClick()
     {
-        SceneLoader.Instance.LoadLevel("Redouane_Scene");
+        SceneLoader.Instance.LoadLevel("Redouan_Scene");
     }
 
     public void OnMenuButtonClick()
