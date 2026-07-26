@@ -48,7 +48,7 @@ Material:
     - _Min: 0.3
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _Saturation_Amplifier: 1.1
+    - _Saturation_Amplifier: 1.2
     - _Shades: 0.4
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
