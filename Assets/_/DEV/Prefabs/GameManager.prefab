@@ -55,7 +55,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   firstInteractiveObjectToActive: {fileID: 0}
-  timeBetweenActivation: 10
+  timeBetweenActivation: 0.5
   globalTimerText: {fileID: 0}
   nbrOfMistakesText: {fileID: 0}
 --- !u!114 &2807848398071411126

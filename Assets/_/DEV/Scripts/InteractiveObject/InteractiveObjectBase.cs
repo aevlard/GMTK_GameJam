@@ -13,6 +13,11 @@ public class InteractiveObjectBase : MonoBehaviour
     
     [SerializeField] private PlayerInput playerInput;
     [SerializeField] private GameManager gameManager;
+    
+    [Header("Particules")]
+    private ParticleSystem stressParticles;
+    [Tooltip("X = ratio de temps restant (1 = début, 0 = fin). Y = nombre max de particules.")]
+    [SerializeField] private AnimationCurve particleCountCurve = AnimationCurve.Linear(0f, 50f, 1f, 5f);
 
     [Header("Interval Event")]
     [Tooltip("X = ratio de temps restant (1 = début, 0 = fin). Y = intervalle en secondes entre chaque tic.")]
@@ -47,6 +52,11 @@ public class InteractiveObjectBase : MonoBehaviour
 
     public virtual void Start()
     {
+        stressParticles = GetComponentInChildren<ParticleSystem>();
+        
+        var main = stressParticles.main;
+        main.maxParticles = 1;
+        
         _objectCamera = transform.GetChild(0).GetComponent<CinemachineCamera>();
         
         viewCamera = Camera.main;
@@ -77,6 +87,7 @@ public class InteractiveObjectBase : MonoBehaviour
             {
                 DisplayTimer(_timer.RemainingTime);
                 HandleIntervalTick();
+                HandleParticles();
             })
             .OnComplete(() =>
             {
@@ -118,6 +129,17 @@ public class InteractiveObjectBase : MonoBehaviour
                 _ticSound.Play(transform.position);
             }
         }
+    }
+    
+    private void HandleParticles()
+    {
+        if (stressParticles == null || initialDuration <= 0f) return;
+
+        float ratio = Mathf.Clamp01(_timer.RemainingTime / initialDuration);
+        int targetMaxParticles = Mathf.RoundToInt(particleCountCurve.Evaluate(ratio));
+
+        var main = stressParticles.main;
+        main.maxParticles = targetMaxParticles;
     }
 
     public virtual void MoveToPlayer(Transform playerHand)
