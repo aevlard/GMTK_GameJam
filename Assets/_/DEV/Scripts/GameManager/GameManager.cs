@@ -160,8 +160,8 @@ public class GameManager : MonoBehaviour
     {
         if (nbrOfMisstakes > 3)
         {
-            Debug.Log("fin de game");
-            SceneLoader.Instance.LoadGameOver();
+            PlayerPrefs.SetFloat("timeLeft", globalTimerTime);
+            SceneLoader.Instance.LoadLevel("GameOver_Scene");
         }
     }
 }
