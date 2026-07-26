@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SFX_CookingTimer_Alarm
   m_EditorClassIdentifier: Assembly-CSharp::SoundConfig
   clips:
-  - {fileID: 0}
+  - {fileID: 8300000, guid: 4e61a84a265097845857a12c627e41ca, type: 3}
   volume: 1
   mixerGroup: {fileID: 3751767765431724220, guid: f14d00d948e5b094690f40d095f196b8, type: 2}
   randomizePitch: 0

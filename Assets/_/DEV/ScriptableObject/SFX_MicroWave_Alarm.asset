@@ -12,7 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b84be247191c4f84ab8157d1a18d5080, type: 3}
   m_Name: SFX_MicroWave_Alarm
   m_EditorClassIdentifier: Assembly-CSharp::SoundConfig
-  clips: []
+  clips:
+  - {fileID: 8300000, guid: fe749efee8157b642883b825484896bc, type: 3}
+  - {fileID: 8300000, guid: 6aa3b266056b8eb43a01cb1dda5383a0, type: 3}
+  - {fileID: 8300000, guid: 2e10113ac7dea7648b9b6e93bd5f7bba, type: 3}
   volume: 1
   mixerGroup: {fileID: 2120912982623824623, guid: f14d00d948e5b094690f40d095f196b8, type: 2}
   randomizePitch: 0
