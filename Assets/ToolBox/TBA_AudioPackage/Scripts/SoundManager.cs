@@ -13,46 +13,38 @@ public class SoundManager : MonoBehaviour
     private Queue<AudioSource> audioSourcePool;
     private List<AudioSourceTimer> activeTimers;
 
-    // Progressive pitch : compteur de lectures par SoundConfig
     private readonly Dictionary<SoundConfig, int> pitchCounters = new();
-
-    // Groupe : nombre de sons actifs par groupe + file d'attente
     private readonly Dictionary<string, int> activeGroupCount = new();
     private readonly Dictionary<string, Queue<PendingGroupSound>> pendingGroupSounds = new();
-
-    // ─────────────────────────────────────────
-    // Inner classes
-    // ─────────────────────────────────────────
 
     private class AudioSourceTimer
     {
         public AudioSource source;
         public float endTime;
         public float originalPitch;
-        public string group; // null si pas de groupe
+        public string group;
+        public bool isLooping; // <-- NEW
 
-        public AudioSourceTimer(AudioSource source, float duration, string group = null)
+        public AudioSourceTimer(AudioSource source, float duration, string group = null, bool isLooping = false)
         {
-            this.source    = source;
-            this.endTime   = Time.time + duration;
+            this.source = source;
+            this.endTime = Time.time + duration;
             this.originalPitch = source.pitch;
-            this.group     = group;
+            this.group = group;
+            this.isLooping = isLooping;
         }
     }
 
     private class PendingGroupSound
     {
-        public AudioClip       clip;
-        public Vector3         position;
-        public float           volume;
-        public float           pitch;
+        public AudioClip clip;
+        public Vector3 position;
+        public float volume;
+        public float pitch;
         public AudioMixerGroup mixerGroup;
-        public string          group;
+        public string group;
+        public bool loop; // <-- NEW
     }
-
-    // ─────────────────────────────────────────
-    // Lifecycle
-    // ─────────────────────────────────────────
 
     private void Awake()
     {
@@ -71,7 +63,7 @@ public class SoundManager : MonoBehaviour
     private void InitializePool()
     {
         audioSourcePool = new Queue<AudioSource>();
-        activeTimers    = new List<AudioSourceTimer>();
+        activeTimers = new List<AudioSourceTimer>();
 
         for (int i = 0; i < poolSize; i++)
             CreateNewAudioSource();
@@ -101,8 +93,9 @@ public class SoundManager : MonoBehaviour
     private void ReturnToPool(AudioSource source, float originalPitch)
     {
         source.Stop();
-        source.clip  = null;
+        source.clip = null;
         source.pitch = originalPitch;
+        source.loop = false; // <-- NEW : reset au cas où, pour pas polluer la prochaine lecture
         source.gameObject.SetActive(false);
         audioSourcePool.Enqueue(source);
     }
@@ -115,24 +108,49 @@ public class SoundManager : MonoBehaviour
         {
             AudioSourceTimer timer = activeTimers[i];
 
+            if (timer.isLooping) continue; // <-- NEW : un son en boucle ne s'auto-termine jamais
             if (now < timer.endTime) continue;
 
-            string group = timer.group;
-            ReturnToPool(timer.source, timer.originalPitch);
-            activeTimers.RemoveAt(i);
+            FinishSound(i);
+        }
+    }
 
-            if (string.IsNullOrEmpty(group)) continue;
+    // ─────────────────────────────────────────
+    // Terminaison (partagée entre auto-fin ET stop manuel)
+    // ─────────────────────────────────────────
 
-            // Libère une place dans le groupe
-            activeGroupCount[group] = Mathf.Max(0, GetGroupCount(group) - 1);
+    private void FinishSound(int index)
+    {
+        AudioSourceTimer timer = activeTimers[index];
+        string group = timer.group;
 
-            // Si le groupe est libre, joue le prochain son en attente
-            if (activeGroupCount[group] == 0
-                && pendingGroupSounds.TryGetValue(group, out Queue<PendingGroupSound> queue)
-                && queue.Count > 0)
+        ReturnToPool(timer.source, timer.originalPitch);
+        activeTimers.RemoveAt(index);
+
+        if (string.IsNullOrEmpty(group)) return;
+
+        activeGroupCount[group] = Mathf.Max(0, GetGroupCount(group) - 1);
+
+        if (activeGroupCount[group] == 0
+            && pendingGroupSounds.TryGetValue(group, out Queue<PendingGroupSound> queue)
+            && queue.Count > 0)
+        {
+            PendingGroupSound next = queue.Dequeue();
+            PlaySoundInternal(next.clip, next.position, next.volume, next.pitch, next.mixerGroup, next.group, next.loop);
+        }
+    }
+
+    /// <summary>Stoppe immédiatement un son précis (référence retournée par Play) et le rend au pool.</summary>
+    public void StopSound(AudioSource source)
+    {
+        if (source == null) return;
+
+        for (int i = activeTimers.Count - 1; i >= 0; i--)
+        {
+            if (activeTimers[i].source == source)
             {
-                PendingGroupSound next = queue.Dequeue();
-                PlaySoundInternal(next.clip, next.position, next.volume, next.pitch, next.mixerGroup, next.group);
+                FinishSound(i);
+                return;
             }
         }
     }
@@ -141,22 +159,21 @@ public class SoundManager : MonoBehaviour
     // Point d'entrée principal (SoundConfig)
     // ─────────────────────────────────────────
 
-    /// <summary>Joue un SoundConfig en tenant compte de toutes ses options.</summary>
-    public void Play(SoundConfig config, Vector3 position)
+    /// <summary>Joue un SoundConfig. Retourne l'AudioSource utilisée (null si échec ou mis en file d'attente).</summary>
+    public AudioSource Play(SoundConfig config, Vector3 position)
     {
         if (config == null)
         {
             Debug.LogWarning("SoundManager.Play : SoundConfig est null.");
-            return;
+            return null;
         }
 
         AudioClip clip = config.GetRandomClip();
-        if (clip == null) return;
+        if (clip == null) return null;
 
-        float  pitch = ResolvePitch(config);
+        float pitch = ResolvePitch(config);
         string group = string.IsNullOrEmpty(config.soundGroup) ? null : config.soundGroup;
 
-        // Si le groupe est occupé → mise en attente
         if (group != null && GetGroupCount(group) > 0)
         {
             if (!pendingGroupSounds.ContainsKey(group))
@@ -164,30 +181,31 @@ public class SoundManager : MonoBehaviour
 
             pendingGroupSounds[group].Enqueue(new PendingGroupSound
             {
-                clip       = clip,
-                position   = position,
-                volume     = config.volume,
-                pitch      = pitch,
+                clip = clip,
+                position = position,
+                volume = config.volume,
+                pitch = pitch,
                 mixerGroup = config.mixerGroup,
-                group      = group
+                group = group,
+                loop = config.loop
             });
-            return;
+            return null; // pas de handle possible tant que le son n'a pas vraiment démarré
         }
 
-        PlaySoundInternal(clip, position, config.volume, pitch, config.mixerGroup, group);
+        return PlaySoundInternal(clip, position, config.volume, pitch, config.mixerGroup, group, config.loop);
     }
 
-    public void Play(SoundConfig config, Transform transform)
+    public AudioSource Play(SoundConfig config, Transform transform)
         => Play(config, transform.position);
 
     // ─────────────────────────────────────────
-    // Progressive Pitch
+    // Progressive Pitch (inchangé)
     // ─────────────────────────────────────────
 
     private float ResolvePitch(SoundConfig config)
     {
-        if (config.progressivePitch)  return GetProgressivePitch(config);
-        if (config.randomizePitch)    return Random.Range(config.minPitch, config.maxPitch);
+        if (config.progressivePitch) return GetProgressivePitch(config);
+        if (config.randomizePitch) return Random.Range(config.minPitch, config.maxPitch);
         return 1f;
     }
 
@@ -196,25 +214,21 @@ public class SoundManager : MonoBehaviour
         if (!pitchCounters.TryGetValue(config, out int count))
             count = 0;
 
-        // Interpole basePitch → progressiveMaxPitch sur (iterationsToMax - 1) incréments
-        int   steps = Mathf.Max(1, config.iterationsToMax - 1);
-        float t     = Mathf.Clamp01((float)count / steps);
+        int steps = Mathf.Max(1, config.iterationsToMax - 1);
+        float t = Mathf.Clamp01((float)count / steps);
         float pitch = Mathf.Lerp(config.basePitch, config.progressiveMaxPitch, t);
 
-        // Avance le compteur (bloqué au max)
         pitchCounters[config] = Mathf.Min(count + 1, steps);
 
         return pitch;
     }
 
-    /// <summary>Remet le compteur de pitch progressif à zéro pour ce SoundConfig.</summary>
     public void ResetPitchCounter(SoundConfig config)
     {
         if (config != null)
             pitchCounters[config] = 0;
     }
 
-    /// <summary>Retourne le nombre de lectures actuelles pour le pitch progressif.</summary>
     public int GetPitchCount(SoundConfig config)
         => config != null && pitchCounters.TryGetValue(config, out int c) ? c : 0;
 
@@ -222,19 +236,21 @@ public class SoundManager : MonoBehaviour
     // Lecture interne
     // ─────────────────────────────────────────
 
-    private void PlaySoundInternal(AudioClip clip, Vector3 position, float volume,
-        float pitch, AudioMixerGroup mixerGroup, string group)
+    private AudioSource PlaySoundInternal(AudioClip clip, Vector3 position, float volume,
+        float pitch, AudioMixerGroup mixerGroup, string group, bool loop = false)
     {
         AudioSource src = GetAudioSource();
-        src.transform.position   = position;
-        src.clip                 = clip;
-        src.volume               = volume;
-        src.pitch                = pitch;
+        src.transform.position = position;
+        src.clip = clip;
+        src.volume = volume;
+        src.pitch = pitch;
         src.outputAudioMixerGroup = mixerGroup;
+        src.loop = loop; // <-- NEW
         src.Play();
 
-        float duration = clip.length / Mathf.Max(0.01f, Mathf.Abs(pitch));
-        activeTimers.Add(new AudioSourceTimer(src, duration, group));
+        // Si le son boucle, la "durée" n'a pas de sens pour l'auto-cleanup
+        float duration = loop ? Mathf.Infinity : clip.length / Mathf.Max(0.01f, Mathf.Abs(pitch));
+        activeTimers.Add(new AudioSourceTimer(src, duration, group, loop));
 
         if (!string.IsNullOrEmpty(group))
         {
@@ -242,10 +258,12 @@ public class SoundManager : MonoBehaviour
                 activeGroupCount[group] = 0;
             activeGroupCount[group]++;
         }
+
+        return src;
     }
 
     // ─────────────────────────────────────────
-    // API legacy (rétrocompatibilité)
+    // API legacy (inchangée, sans loop pour rester rétrocompatible)
     // ─────────────────────────────────────────
 
     public void PlaySoundFX(AudioClip clip, Vector3 position, float volume = 1f, AudioMixerGroup mixerGroup = null)
@@ -278,17 +296,15 @@ public class SoundManager : MonoBehaviour
         => PlaySoundFXWithPitch(clip, spawnTransform.position, volume, minPitch, maxPitch, mixerGroup);
 
     // ─────────────────────────────────────────
-    // Utilitaires groupes
+    // Utilitaires groupes (inchangés)
     // ─────────────────────────────────────────
 
-    /// <summary>Vide la file d'attente d'un groupe sans stopper les sons actifs.</summary>
     public void ClearGroupQueue(string group)
     {
         if (pendingGroupSounds.TryGetValue(group, out var q))
             q.Clear();
     }
 
-    /// <summary>Stoppe immédiatement tous les sons actifs d'un groupe ET vide sa file.</summary>
     public void StopGroup(string group)
     {
         ClearGroupQueue(group);
@@ -296,16 +312,12 @@ public class SoundManager : MonoBehaviour
         for (int i = activeTimers.Count - 1; i >= 0; i--)
         {
             if (activeTimers[i].group == group)
-            {
-                ReturnToPool(activeTimers[i].source, activeTimers[i].originalPitch);
-                activeTimers.RemoveAt(i);
-            }
+                FinishSound(i);
         }
 
         activeGroupCount[group] = 0;
     }
 
-    /// <summary>Retourne le nombre de sons en attente pour un groupe.</summary>
     public int GetPendingGroupCount(string group)
         => pendingGroupSounds.TryGetValue(group, out var q) ? q.Count : 0;
 
@@ -313,13 +325,11 @@ public class SoundManager : MonoBehaviour
     // Utilitaires généraux
     // ─────────────────────────────────────────
 
-    /// <summary>Stoppe tous les sons et vide toutes les files d'attente.</summary>
     public void StopAllSounds()
     {
-        foreach (var timer in activeTimers)
-            ReturnToPool(timer.source, timer.originalPitch);
+        for (int i = activeTimers.Count - 1; i >= 0; i--)
+            FinishSound(i);
 
-        activeTimers.Clear();
         activeGroupCount.Clear();
         pendingGroupSounds.Clear();
     }
