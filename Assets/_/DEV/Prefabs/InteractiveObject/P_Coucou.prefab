@@ -236,8 +236,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.47, y: 1.39, z: 0.1}
-  m_Center: {x: 0, y: 0.27, z: 0}
+  m_Size: {x: 0.47, y: 0.92817247, z: 0.1}
+  m_Center: {x: 0, y: 0.039086282, z: 0}
 --- !u!114 &5025917218447794880
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -298,7 +298,7 @@ MonoBehaviour:
   hourHand: {fileID: 1104548624132530045}
   minuteHand: {fileID: 6019728054042081064}
   secondsPerFullMinuteRotation: 60
-  rotationAxis: {x: 0, y: -1, z: 0}
+  rotationAxis: {x: 0, y: 0, z: 1}
 --- !u!1 &5848337862130642840
 GameObject:
   m_ObjectHideFlags: 0
@@ -356,8 +356,8 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8876785950554962143}
   serializedVersion: 2
-  m_LocalRotation: {x: -0.000088568566, y: 0.9998546, z: -0.015308186, w: -0.007513852}
-  m_LocalPosition: {x: -0.006730318, y: 0.47749996, z: 1.0507355}
+  m_LocalRotation: {x: -0.00019922617, y: -0.9998629, z: 0.013809962, w: -0.009135931}
+  m_LocalPosition: {x: -0.014941098, y: 0.040471792, z: 0.87063074}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -474,7 +474,7 @@ PrefabInstance:
       addedObject: {fileID: 2771254335376446177}
     - targetCorrespondingSourceObject: {fileID: 2438946713244931578, guid: d31b26d66c4b46641acfbc8537178123, type: 3}
       insertIndex: -1
-      addedObject: {fileID: 4451488341058479148}
+      addedObject: {fileID: 1219119339199191601}
   m_SourcePrefab: {fileID: 100100000, guid: d31b26d66c4b46641acfbc8537178123, type: 3}
 --- !u!4 &1104548624132530045 stripped
 Transform:
@@ -503,7 +503,7 @@ MonoBehaviour:
     m_Bits: 128
   cam: {fileID: 0}
   dragMode: 2
-  rotationAxis: 1
+  rotationAxis: 2
   invertAxis: 0
   sensitivity: 0.2
   rotationStep: 15
@@ -512,7 +512,7 @@ MonoBehaviour:
   minAngle: 0
   maxAngle: 0
   showCurrentAngle: 0
-  _interactiveObject: {fileID: 0}
+  _interactiveObject: {fileID: 5025917218447794880}
 --- !u!54 &2771254335376446177
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -540,7 +540,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &4451488341058479148
+--- !u!65 &1219119339199191601
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -559,8 +559,8 @@ BoxCollider:
   m_ProvidesContacts: 0
   m_Enabled: 1
   serializedVersion: 3
-  m_Size: {x: 0.04320415, y: 0.28849745, z: 0.022294264}
-  m_Center: {x: 0.0009676104, y: 0.609583, z: 0.036477845}
+  m_Size: {x: 0.05602739, y: 0.2941111, z: 0.015446972}
+  m_Center: {x: -0.00044306088, y: 0.10134335, z: 0.021565814}
 --- !u!4 &6019728054042081064 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -5347117694140553527, guid: d31b26d66c4b46641acfbc8537178123, type: 3}

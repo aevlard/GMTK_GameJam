@@ -1279,7 +1279,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6600853071127053630}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -0}
   m_LocalScale: {x: -1, y: 1, z: -1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -1287,7 +1287,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0959, y: 0.0583}
+  m_AnchoredPosition: {x: -0.118, y: 0.0583}
   m_SizeDelta: {x: 0.09877, y: 0.05218}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &8647011702356151199
@@ -1506,6 +1506,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ed7df70128aece24194593d617994e88, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::ClimPadHandler
+  _ticSound: {fileID: 0}
+  _alarmSound: {fileID: 0}
   playerInput: {fileID: 0}
   gameManager: {fileID: 0}
   tickIntervalCurve:
@@ -2288,6 +2290,10 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 12fc7985efc83b3449b3fcd68067fc2f, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 616020322a3ae124192e30b8de892e62, type: 2}
     - target: {fileID: 919132149155446097, guid: 12fc7985efc83b3449b3fcd68067fc2f, type: 3}
       propertyPath: m_Name
       value: 3d_Clim_pad

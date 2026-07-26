@@ -30,7 +30,7 @@ public class InteractiveObjectBase : MonoBehaviour
     
 
     [Header("Text")]
-    [SerializeField] private TMP_Text timerText;
+    [SerializeField] protected TMP_Text timerText;
     
     [Header("Timer")]
     [SerializeField] protected float initialDuration;

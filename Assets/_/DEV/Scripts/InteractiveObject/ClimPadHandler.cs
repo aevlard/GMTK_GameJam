@@ -6,7 +6,6 @@ public class ClimPadHandler : InteractiveObjectBase
 {
     [SerializeField] private TMP_Text postItCodeText;
     [SerializeField] private TMP_Text userInputCodeText;
-    [SerializeField] private TMP_Text timerText;
     [SerializeField] private float timeToHadPerClick = 10f;
     
     private string climCode = null;

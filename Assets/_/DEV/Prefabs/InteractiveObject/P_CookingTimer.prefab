@@ -281,6 +281,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8c90a1d83c8bd4848997ef768d990dfd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::CookingTimerHandler
+  _ticSound: {fileID: 0}
+  _alarmSound: {fileID: 0}
   playerInput: {fileID: 0}
   gameManager: {fileID: 0}
   tickIntervalCurve:
