@@ -223,6 +223,14 @@ PrefabInstance:
       value: 1.0489864
       objectReference: {fileID: 0}
     - target: {fileID: 795465998098368318, guid: 06a0f00a17c832d4999bbcc3e8a8e28d, type: 3}
+      propertyPath: _ticSound
+      value: 
+      objectReference: {fileID: 11400000, guid: 5ab7d8f6488dcb44a9cbe7f5e102fbbc, type: 2}
+    - target: {fileID: 795465998098368318, guid: 06a0f00a17c832d4999bbcc3e8a8e28d, type: 3}
+      propertyPath: _alarmSound
+      value: 
+      objectReference: {fileID: 11400000, guid: 9c4636cdd7d0a40428ffa59d2fc3a8aa, type: 2}
+    - target: {fileID: 795465998098368318, guid: 06a0f00a17c832d4999bbcc3e8a8e28d, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 120200254}
@@ -1482,6 +1490,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 3b2d1dc05edfe9749902a791adafc906, type: 2}
     - target: {fileID: 7056121496739689527, guid: c8bc8dc63f3e44843a3ae0fd2223d3a9, type: 3}
+      propertyPath: _ticSound
+      value: 
+      objectReference: {fileID: 11400000, guid: ac678a7f3c3f98842b43d0339b201ada, type: 2}
+    - target: {fileID: 7056121496739689527, guid: c8bc8dc63f3e44843a3ae0fd2223d3a9, type: 3}
+      propertyPath: _alarmSound
+      value: 
+      objectReference: {fileID: 11400000, guid: e49556da797bd4747b4c3ac79df3d96c, type: 2}
+    - target: {fileID: 7056121496739689527, guid: c8bc8dc63f3e44843a3ae0fd2223d3a9, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 120200254}
@@ -1797,6 +1813,14 @@ PrefabInstance:
       propertyPath: m_Color.a
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1125571798870952877, guid: 38e74ece34612ff43a62cf5088909049, type: 3}
+      propertyPath: _ticSound
+      value: 
+      objectReference: {fileID: 11400000, guid: 07a57d08ca139044ea554bd477b61b5c, type: 2}
+    - target: {fileID: 1125571798870952877, guid: 38e74ece34612ff43a62cf5088909049, type: 3}
+      propertyPath: _alarmSound
+      value: 
+      objectReference: {fileID: 11400000, guid: e650cb6b2bafc0a489dd47a1fd806242, type: 2}
     - target: {fileID: 1125571798870952877, guid: 38e74ece34612ff43a62cf5088909049, type: 3}
       propertyPath: gameManager
       value: 
@@ -4188,6 +4212,14 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 2170118994331949093, guid: 9d3e9e2f14b8fed4b88559ace3bf45df, type: 3}
+      propertyPath: _ticSound
+      value: 
+      objectReference: {fileID: 11400000, guid: 176a17a0f4ce3fa4ca86cc5412be54ad, type: 2}
+    - target: {fileID: 2170118994331949093, guid: 9d3e9e2f14b8fed4b88559ace3bf45df, type: 3}
+      propertyPath: _alarmSound
+      value: 
+      objectReference: {fileID: 11400000, guid: 46517c7f56321d94a883f3a6c8afe1f5, type: 2}
+    - target: {fileID: 2170118994331949093, guid: 9d3e9e2f14b8fed4b88559ace3bf45df, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 120200254}
@@ -4744,6 +4776,14 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 9185788945785792767, guid: ae7742625baffe54a9e10880511fcde5, type: 3}
+      propertyPath: _ticSound
+      value: 
+      objectReference: {fileID: 11400000, guid: 3faca3d1ecbfe6f48a4f70f01d119581, type: 2}
+    - target: {fileID: 9185788945785792767, guid: ae7742625baffe54a9e10880511fcde5, type: 3}
+      propertyPath: _alarmSound
+      value: 
+      objectReference: {fileID: 11400000, guid: 7987983b7310c5547a52111f8bea607e, type: 2}
+    - target: {fileID: 9185788945785792767, guid: ae7742625baffe54a9e10880511fcde5, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 120200254}
@@ -5036,6 +5076,14 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 3b2d1dc05edfe9749902a791adafc906, type: 2}
     - target: {fileID: 5025917218447794880, guid: 270623b2f2e1596428252a8e0a38f82c, type: 3}
+      propertyPath: _ticSound
+      value: 
+      objectReference: {fileID: 11400000, guid: 970312f467890c546a245abed2c290e2, type: 2}
+    - target: {fileID: 5025917218447794880, guid: 270623b2f2e1596428252a8e0a38f82c, type: 3}
+      propertyPath: _alarmSound
+      value: 
+      objectReference: {fileID: 11400000, guid: 3a6b5a04f0f1609479a250947ed8bb05, type: 2}
+    - target: {fileID: 5025917218447794880, guid: 270623b2f2e1596428252a8e0a38f82c, type: 3}
       propertyPath: gameManager
       value: 
       objectReference: {fileID: 120200254}
@@ -5292,6 +5340,14 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1566194639722274127, guid: fb480b076ff42e045b179616de084af4, type: 3}
+      propertyPath: _ticSound
+      value: 
+      objectReference: {fileID: 11400000, guid: 1682c1639cd85be47ad612fcb0b942d3, type: 2}
+    - target: {fileID: 1566194639722274127, guid: fb480b076ff42e045b179616de084af4, type: 3}
+      propertyPath: _alarmSound
+      value: 
+      objectReference: {fileID: 11400000, guid: 0b7cd74790499e948929909a53d8b9ff, type: 2}
     - target: {fileID: 1566194639722274127, guid: fb480b076ff42e045b179616de084af4, type: 3}
       propertyPath: gameManager
       value: 
@@ -6663,9 +6719,17 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 2100000, guid: 3b2d1dc05edfe9749902a791adafc906, type: 2}
     - target: {fileID: 3466337641562638558, guid: ab77a91606bba6c47b1175d53498cf68, type: 3}
+      propertyPath: _ticSound
+      value: 
+      objectReference: {fileID: 11400000, guid: 0700131ea7b44ee4682f26daa03c5218, type: 2}
+    - target: {fileID: 3466337641562638558, guid: ab77a91606bba6c47b1175d53498cf68, type: 3}
       propertyPath: timerText
       value: 
       objectReference: {fileID: 1994069249}
+    - target: {fileID: 3466337641562638558, guid: ab77a91606bba6c47b1175d53498cf68, type: 3}
+      propertyPath: _alarmSound
+      value: 
+      objectReference: {fileID: 11400000, guid: a24c2802734f7e140936cb1efcf37aa8, type: 2}
     - target: {fileID: 3466337641562638558, guid: ab77a91606bba6c47b1175d53498cf68, type: 3}
       propertyPath: gameManager
       value: 
@@ -7504,7 +7568,7 @@ RectTransform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1994069248}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -0.5798}
+  m_LocalPosition: {x: 0, y: 0, z: -0.5144}
   m_LocalScale: {x: -3.6389198, y: 3.6389298, z: -3.6389198}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -7952,6 +8016,7 @@ SceneRoots:
   - {fileID: 366597563}
   - {fileID: 1863784283}
   - {fileID: 851437406}
+  - {fileID: 1635907841}
   - {fileID: 904884185}
   - {fileID: 414916014}
   - {fileID: 1692496849}
@@ -7975,4 +8040,3 @@ SceneRoots:
   - {fileID: 1837403042}
   - {fileID: 1343836484}
   - {fileID: 1145194831}
-  - {fileID: 1635907841}
