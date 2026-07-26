@@ -83,7 +83,14 @@ public class InteractiveObjectBase : MonoBehaviour
                 gameManager.IncreaseNbrOfMisstakes();
                 _timer.Reset();
                 _timer.Start();
-                _alarmSound.Play(transform.position);
+                if (_alarmSound == null)
+                {
+                    Debug.LogWarning("SoundDesign");
+                }
+                else
+                {
+                    _alarmSound.Play(transform.position);
+                }
             });
         _timer.Start();
     }
@@ -101,7 +108,15 @@ public class InteractiveObjectBase : MonoBehaviour
         {
             intervalTimer = 0f;
             OnIntervalTick?.Invoke();
-            _ticSound.Play(transform.position);
+
+            if (_ticSound == null)
+            {
+                Debug.LogWarning("SoundDesign");
+            }
+            else
+            {
+                _ticSound.Play(transform.position);
+            }
         }
     }
 
