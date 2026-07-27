@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.Rendering;
 using UnityEngine.Rendering.Universal;
 using UnityEngine.UI;
@@ -19,6 +20,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private InteractiveObjectBase firstInteractiveObjectToActive;
     [SerializeField] private float timeBetweenActivation = 10f;
     [SerializeField] private TMP_Text globalTimerText;
+    [SerializeField] private PlayerInput playerInput;
     
     [Header("Post Processing")]
     [SerializeField] private Volume pps;
@@ -52,9 +54,10 @@ public class GameManager : MonoBehaviour
 
     private void Start()
     {
-        Time.timeScale = 1f;
-        Cursor.visible = false;
-        Cursor.lockState = CursorLockMode.Locked;
+        playerInput.SwitchCurrentActionMap("ObjectView");
+        Time.timeScale = 0f;
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
         remainingObjectsToActivate = new List<InteractiveObjectBase>(interactiveObjectToActive);
 
         _timer = new Timer(globalTimerTime)
@@ -170,10 +173,19 @@ public class GameManager : MonoBehaviour
 
     private void CheckNbrOfMistakes()
     {
-        if (nbrOfMisstakes > 3)
+        if (nbrOfMisstakes >= 3)
         {
             PlayerPrefs.SetFloat("timeLeft", globalTimerTime);
             SceneLoader.Instance.LoadLevel("GameOver_Scene");
         }
+    }
+
+    public void OnCloseTutoButtonClick(GameObject tutoWindow)
+    {
+        playerInput.SwitchCurrentActionMap("Player");
+        Cursor.visible = false;
+        Cursor.lockState = CursorLockMode.Locked;
+        tutoWindow.SetActive(false);
+        Time.timeScale = 1f;
     }
 }

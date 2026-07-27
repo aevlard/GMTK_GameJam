@@ -69,8 +69,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d11667077176bae4fa40f42e15ded7ab, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::AlarmClockHandler
-  _ticSound: {fileID: 0}
-  _alarmSound: {fileID: 0}
+  _ticSound: {fileID: 11400000, guid: 5ab7d8f6488dcb44a9cbe7f5e102fbbc, type: 2}
+  _alarmSound: {fileID: 11400000, guid: 9c4636cdd7d0a40428ffa59d2fc3a8aa, type: 2}
   playerInput: {fileID: 0}
   gameManager: {fileID: 0}
   particleCountCurve:
@@ -136,7 +136,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   timerText: {fileID: 795728236373998853}
-  initialDuration: 30
+  initialDuration: 60
   playerCamera: {fileID: 0}
   hourHand: {fileID: 6180112596257735634}
   minuteHand: {fileID: 3777802087584746530}
@@ -208,8 +208,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0037, y: 0.144}
-  m_SizeDelta: {x: 0.09877, y: 0.05218}
+  m_AnchoredPosition: {x: -0.0028, y: 0.1671}
+  m_SizeDelta: {x: 0.15729, y: 0.05218}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!23 &331964834613088410
 MeshRenderer:
@@ -236,7 +236,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  - {fileID: -3936602441651674552, guid: 0f02d487ba7f63b4f98c47d8b3762e1a, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -280,10 +280,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 77:77:77
+  m_text: --:--:--
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0f02d487ba7f63b4f98c47d8b3762e1a, type: 2}
+  m_sharedMaterial: {fileID: -3936602441651674552, guid: 0f02d487ba7f63b4f98c47d8b3762e1a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -363,6 +363,18 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4514149579300879421}
     m_Modifications:
+    - target: {fileID: -9159765466913640946, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -9159765466913640946, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7154f78780414498b7aca244e20a8a, type: 2}
+    - target: {fileID: -9159765466913640946, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3b2d1dc05edfe9749902a791adafc906, type: 2}
     - target: {fileID: -8679921383154817045, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -403,14 +415,74 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -4998056601046828006, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -4998056601046828006, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7154f78780414498b7aca244e20a8a, type: 2}
+    - target: {fileID: -4998056601046828006, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3b2d1dc05edfe9749902a791adafc906, type: 2}
     - target: {fileID: -3115689609106326471, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
       propertyPath: m_Layer
       value: 7
       objectReference: {fileID: 0}
+    - target: {fileID: 280932781305148807, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 280932781305148807, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7154f78780414498b7aca244e20a8a, type: 2}
+    - target: {fileID: 280932781305148807, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3b2d1dc05edfe9749902a791adafc906, type: 2}
     - target: {fileID: 919132149155446097, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
       propertyPath: m_Name
       value: 3d_AlarmClock
       objectReference: {fileID: 0}
+    - target: {fileID: 1397431019224005601, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 1397431019224005601, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7154f78780414498b7aca244e20a8a, type: 2}
+    - target: {fileID: 1397431019224005601, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3b2d1dc05edfe9749902a791adafc906, type: 2}
+    - target: {fileID: 6330522479889564224, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6330522479889564224, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7154f78780414498b7aca244e20a8a, type: 2}
+    - target: {fileID: 6330522479889564224, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3b2d1dc05edfe9749902a791adafc906, type: 2}
+    - target: {fileID: 7211005778322202850, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7211005778322202850, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7154f78780414498b7aca244e20a8a, type: 2}
+    - target: {fileID: 7211005778322202850, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3b2d1dc05edfe9749902a791adafc906, type: 2}
     m_RemovedComponents: []
     m_RemovedGameObjects:
     - {fileID: 1811551603968780072, guid: e00e4e94e465e8543a085b489d265bd0, type: 3}
@@ -531,6 +603,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7689348399894406797}
     m_Modifications:
+    - target: {fileID: 2101354123901087595, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: m_MaxParticleSize
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6775591902829305695, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
       propertyPath: m_Name
       value: PS_Tic
@@ -574,6 +650,54 @@ PrefabInstance:
     - target: {fileID: 7304441878238474622, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: simulationSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: ShapeModule.randomPositionAmount
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].time
+      value: 0.9859619
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].value
+      value: 0.68899536
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].inSlope
+      value: 1.0489864
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].inWeight
+      value: 0.09252401
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].outSlope
+      value: 1.0489864
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

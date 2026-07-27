@@ -49,13 +49,15 @@ public class InteractiveObjectBase : MonoBehaviour
     private float travelSpeed = 3f;
     private bool isBeingViewed;
     public Timer _timer;
+    
+    private AudioSource alarmAudioSource;
 
     public virtual void Start()
     {
         stressParticles = GetComponentInChildren<ParticleSystem>();
         
         var main = stressParticles.main;
-        main.maxParticles = 1;
+        main.maxParticles = 0;
         
         _objectCamera = transform.GetChild(0).GetComponent<CinemachineCamera>();
         
@@ -99,7 +101,7 @@ public class InteractiveObjectBase : MonoBehaviour
                 }
                 else
                 {
-                    _alarmSound.Play(transform.position);
+                    alarmAudioSource = _alarmSound.Play(transform.position);
                 }
             });
         _timer.Start();
@@ -234,9 +236,15 @@ public class InteractiveObjectBase : MonoBehaviour
     {
         if (_timer.RemainingTime <= 0)
         {
+            _alarmSound.Stop(alarmAudioSource);
             _timer.Reset();
             _timer.Start();
         }
         _timer.AddRemainingTime(time);
+    }
+
+    private void OnDisable()
+    {
+        _alarmSound.Stop(alarmAudioSource);
     }
 }

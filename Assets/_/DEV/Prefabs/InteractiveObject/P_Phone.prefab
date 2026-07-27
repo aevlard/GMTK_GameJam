@@ -613,8 +613,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5d78ea1673b59994195aaf11851dcabb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::PhoneHandler
-  _ticSound: {fileID: 0}
-  _alarmSound: {fileID: 0}
+  _ticSound: {fileID: 11400000, guid: 3faca3d1ecbfe6f48a4f70f01d119581, type: 2}
+  _alarmSound: {fileID: 11400000, guid: 7987983b7310c5547a52111f8bea607e, type: 2}
   playerInput: {fileID: 0}
   gameManager: {fileID: 0}
   particleCountCurve:
@@ -680,7 +680,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 64
   timerText: {fileID: 2129192302781715308}
-  initialDuration: 20
+  initialDuration: 45
   playerCamera: {fileID: 0}
   timerSlider: {fileID: 7965285377089590722}
   baitSlider: {fileID: 2443147466369347217}
@@ -1224,8 +1224,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: RESET
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0f02d487ba7f63b4f98c47d8b3762e1a, type: 2}
+  m_sharedMaterial: {fileID: -3936602441651674552, guid: 0f02d487ba7f63b4f98c47d8b3762e1a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1359,10 +1359,10 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: 88:88:88
+  m_text: --:--:--
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0f02d487ba7f63b4f98c47d8b3762e1a, type: 2}
+  m_sharedMaterial: {fileID: -3936602441651674552, guid: 0f02d487ba7f63b4f98c47d8b3762e1a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1386,8 +1386,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 14.2
-  m_fontSizeBase: 14.2
+  m_fontSize: 13.32
+  m_fontSizeBase: 13.32
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1498,8 +1498,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: RING NOW
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 0f02d487ba7f63b4f98c47d8b3762e1a, type: 2}
+  m_sharedMaterial: {fileID: -3936602441651674552, guid: 0f02d487ba7f63b4f98c47d8b3762e1a, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -1763,6 +1763,18 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6c27fe42f8b77ab40acee0dfd041aad3, type: 3}
+      propertyPath: m_Materials.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: -7511558181221131132, guid: 6c27fe42f8b77ab40acee0dfd041aad3, type: 3}
+      propertyPath: 'm_Materials.Array.data[0]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3e7154f78780414498b7aca244e20a8a, type: 2}
+    - target: {fileID: -7511558181221131132, guid: 6c27fe42f8b77ab40acee0dfd041aad3, type: 3}
+      propertyPath: 'm_Materials.Array.data[1]'
+      value: 
+      objectReference: {fileID: 2100000, guid: 3b2d1dc05edfe9749902a791adafc906, type: 2}
     - target: {fileID: 919132149155446097, guid: 6c27fe42f8b77ab40acee0dfd041aad3, type: 3}
       propertyPath: m_Name
       value: 3d_phone
@@ -1785,6 +1797,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 7437394189624666826}
     m_Modifications:
+    - target: {fileID: 2101354123901087595, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: m_MaxParticleSize
+      value: 0.1
+      objectReference: {fileID: 0}
     - target: {fileID: 6775591902829305695, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
       propertyPath: m_Name
       value: PS_Tic
@@ -1828,6 +1844,54 @@ PrefabInstance:
     - target: {fileID: 7304441878238474622, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: simulationSpeed
+      value: 1.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: ColorModule.enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: ShapeModule.radius.value
+      value: 0.0001
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: InitialModule.startSize.scalar
+      value: 0.3
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: InitialModule.startSpeed.scalar
+      value: 0.95
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: ShapeModule.randomPositionAmount
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: ColorModule.gradient.maxGradient.key1.a
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].time
+      value: 0.9859619
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].value
+      value: 0.68899536
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].inSlope
+      value: 1.0489864
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].inWeight
+      value: 0.09252401
+      objectReference: {fileID: 0}
+    - target: {fileID: 7595061327825953757, guid: fd11366b655febe4aa49176cdbb54289, type: 3}
+      propertyPath: SizeModule.curve.maxCurve.m_Curve.Array.data[1].outSlope
+      value: 1.0489864
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

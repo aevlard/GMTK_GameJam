@@ -12,6 +12,8 @@ public class GameOverManager : MonoBehaviour
     {
         time = PlayerPrefs.GetFloat("timeLeft");
         DisplayTimer(time);
+        Cursor.visible = true;
+        Cursor.lockState = CursorLockMode.None;
     }
 
     public void OnRestartButtonClick()
